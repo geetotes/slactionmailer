@@ -40,7 +40,7 @@ def notification
 end
 ```
 Either way, your mailer messages will appear like this:
-[image]
+![image](https://cloud.githubusercontent.com/assets/1783498/7716846/c7859bf2-fe5d-11e4-85a0-cc740a573585.png)
 
 ##About
 
