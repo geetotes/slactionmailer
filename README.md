@@ -1,8 +1,9 @@
-= Slactionmailer
+# Slactionmailer
 
 Slactionmailer is a mailer for ActionMailer that sends your message to a Slack channel.
 
-#Installation
+## Installation
+
 Simple include the gem in your gemfile.
 ```ruby
 gem 'slactionmailer'
@@ -11,7 +12,9 @@ Or install from the command line.
 ```ruby
 gem install slacktionmailer
 ```
-#Setup
+
+## Setup
+
 In your `enviroment.rb`, add the following lines:
 ```
 config.slaction_mailer.webhook
@@ -20,7 +23,8 @@ config.slaction_mailer.username
 config.slaction_mailer.avatar
 ```
 
-#Usage
+## Usage
+
 Slactionmailer can be used as the default mailer
 ```ruby
 config.default_mailer => :slack
@@ -38,7 +42,8 @@ end
 Either way, your mailer messages will appear like this:
 [image]
 
-#About
+##About
+
 Slactionmailer uses `slack-notify` to communicate with Slack and takes inspiration from the `letter-opener` gem.
 
 

@@ -10,8 +10,6 @@ describe SlactionMailer::Message do
       body    'This is the email body'
     end 
     message = SlactionMailer::Message.new(mail)
-    puts message.result
-
     pending
   end
 
