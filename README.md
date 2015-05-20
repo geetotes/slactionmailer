@@ -42,6 +42,11 @@ end
 Either way, your mailer messages will appear like this:
 ![image](https://cloud.githubusercontent.com/assets/1783498/7716846/c7859bf2-fe5d-11e4-85a0-cc740a573585.png)
 
+If you want to change the default message template, add the following to your config
+```ruby
+config.slaction_mailer.template = File.read('my_template.text.erb')
+```
+
 ##About
 
 Slactionmailer uses `slack-notify` to communicate with Slack and takes inspiration from the `letter-opener` gem.

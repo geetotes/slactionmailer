@@ -10,8 +10,13 @@ module SlactionMailer
     end
 
     def deliver!(mail)
+      puts self.settings
       notifier = Slack::Notifier.new settings[:webhook], channel:  settings[:channel], username: settings[:username]
-      message = Message.new(mail)
+      if settings.key?(:template)
+        message = Message.new(mail, :template => settings[:template])
+      else
+        message = Message.new(mail)
+      end
       notifier.ping message.result
     end
   end

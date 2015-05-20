@@ -26,5 +26,23 @@ describe SlactionMailer::DeliveryMethod do
         end
       }.not_to raise_error
     end
+
+    it 'sends a message with a template' do
+      Mail.defaults do
+        delivery_method SlactionMailer::DeliveryMethod, 
+          :webhook => "https://hooks.slack.com/services/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", 
+          :channel => "#bottesting", 
+          :username => "SlactionMailer",
+          :template => File.read('spec/examples/template.text.erb')
+      end
+      expect { 
+        Mail.deliver do
+          from "Feaux feaux@example.com"
+          to "Bar bar@example.com"
+          subject "Hello World!"
+          body "I'm a message body!"
+        end
+      }.not_to raise_error
+    end
   end
 end
