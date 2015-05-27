@@ -27,7 +27,8 @@ config.slaction_mailer.avatar
 
 Slactionmailer can be used as the default mailer
 ```ruby
-config.default_mailer => :slack
+#config/environments/development.rb
+config.action_mailer.delivery_method => :slack
 ```
 Or only be used for certain messages 
 

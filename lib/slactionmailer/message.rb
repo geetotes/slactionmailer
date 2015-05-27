@@ -11,8 +11,8 @@ module SlactionMailer
     end
 
     def body
-      @mail.decoded
-    end
+      @mail.text_part.body.decoded
+    end 
 
     def from
       @from ||= Array(@mail['from']).join(", ")
@@ -24,10 +24,10 @@ module SlactionMailer
 
     def self.template
 "Subject: <%= @mail.subject %>
- From: <%= @mail.from %>
- To: <%= @mail.to %>
+ From: <%= from %>
+ To: <%= to %>
  
- <%= @mail.body %>"
+ <%= body %>"
     end
 
     def result
@@ -37,7 +37,7 @@ module SlactionMailer
     def self.to_template(mail)
       @mail = mail
       mail.to_s
-      #"#{ @mail.subject }\nFrom: #{ @mail.from } To: #{ @mail.to }\n #{ @mail.body }"
+     #"#{ @mail.subject }\nFrom: #{ @mail.from } To: #{ @mail.to }\n #{ @mail.body }"
     end
   end
 end
