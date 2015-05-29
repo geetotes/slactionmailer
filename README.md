@@ -10,17 +10,16 @@ gem 'slactionmailer'
 ```
 Or install from the command line.
 ```ruby
-gem install slacktionmailer
+gem install slactionmailer
 ```
 
 ## Setup
 
-In your `enviroment.rb`, add the following lines:
+In your environment or `.env` file, declare the following variables:
 ```
-config.slaction_mailer.webhook
-config.slaction_mailer.channel
-config.slaction_mailer.username
-config.slaction_mailer.avatar
+SLACK_WEBHOOK_URL=your incoming webhook url
+SLACK_CHANNEL=#your slack channel
+SLACK_USERNAME=SlactionMailer (or whaterver you want to call it)
 ```
 
 ## Usage
