@@ -54,3 +54,4 @@ Slactionmailer uses `slack-notify` to communicate with Slack and takes inspirati
 
 
 This project rocks and uses MIT-LICENSE.
+
