@@ -2,6 +2,7 @@
 
 Slactionmailer is a mailer for ActionMailer that sends your message to a Slack channel.
 
+[![Gem Version](https://badge.fury.io/rb/slactionmailer.svg)](http://badge.fury.io/rb/slactionmailer)
 ## Installation
 
 Simple include the gem in your gemfile.
