@@ -17,14 +17,7 @@ describe SlactionMailer::DeliveryMethod do
 
   context 'integration' do
     it 'sends a message successfully' do
-      expect {
-        Mail.deliver do
-          from "Feaux feaux@example.com"
-          to "Bar bar@example.com"
-          subject "Hello World!"
-          body "I'm a message body!"
-        end
-      }.not_to raise_error
+      pending "Need to spec out an actionmailer message"
     end
 
     it 'sends a message with a template' do
