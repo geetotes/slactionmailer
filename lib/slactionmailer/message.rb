@@ -1,9 +1,8 @@
 require 'erb'
 
-
 module SlactionMailer
   class Message < ERB
-    
+
     def initialize(mail, options = {})
       @mail = mail
       @template = options.fetch(:template, self.class.template)
@@ -12,7 +11,7 @@ module SlactionMailer
 
     def body
       @mail.text_part.body.decoded
-    end 
+    end
 
     def from
       @from ||= Array(@mail['from']).join(", ")
@@ -26,7 +25,7 @@ module SlactionMailer
 "Subject: <%= @mail.subject %>
  From: <%= from %>
  To: <%= to %>
- 
+
  <%= body %>"
     end
 

@@ -3,16 +3,18 @@ module SlactionMailer
     class InvalidOption < StandardError; end
 
     attr_accessor :settings
-    
+
     def initialize(options = {})
-      raise InvalidOption, 'ENV["SLACK_WEBHOOK_URL"]is required to send messages' if options[:webhook].nil?
-      raise InvalidOption, 'ENV["SLACK_CHANNEL"]is required to send messages' if options[:channel].nil?
       raise InvalidOption, 'ENV["SLACK_USERNAME"]is required to send messages' if options[:username].nil?
       self.settings = options
     end
 
     def deliver!(mail)
-      notifier = Slack::Notifier.new settings[:webhook], channel:  settings[:channel], username: settings[:username]
+      raise InvalidOption, 'channel is required to send messages' if mail[:channel].nil? && ENV["SLACK_CHANNEL"].nil?
+      raise InvalidOption, 'webhook is required to send messages' if mail[:webhook].nil? && ENV["SLACK_USERNAME"].nil?
+      channel = mail[:channel].nil? ? ENV["SLACK_CHANNEL"] : mail[:channel].value
+      webhook = mail[:webhook].nil? ? ENV["SLACK_WEBHOOK_URL"] : mail[:webhook].value
+      notifier = Slack::Notifier.new webhook, channel: channel, username: settings[:username]
       if settings.key?(:template)
         message = Message.new(mail, :template => settings[:template])
       else
