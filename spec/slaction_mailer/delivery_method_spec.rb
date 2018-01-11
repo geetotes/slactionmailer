@@ -5,8 +5,6 @@ describe SlactionMailer::DeliveryMethod do
 
     Mail.defaults do
       delivery_method SlactionMailer::DeliveryMethod, 
-        :webhook => "https://hooks.slack.com/services/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", 
-        :channel => "#bottesting", 
         :username => "SlactionMailer"
     end
   end
@@ -23,18 +21,19 @@ describe SlactionMailer::DeliveryMethod do
     it 'sends a message with a template' do
       Mail.defaults do
         delivery_method SlactionMailer::DeliveryMethod, 
-          :webhook => "https://hooks.slack.com/services/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", 
-          :channel => "#bottesting", 
           :username => "SlactionMailer",
           :template => File.read('spec/examples/template.text.erb')
       end
       expect { 
-        Mail.deliver do
+        mail = Mail.new do
           from "Feaux feaux@example.com"
           to "Bar bar@example.com"
           subject "Hello World!"
           body "I'm a message body!"
         end
+        mail[:channel] = '#bottesting'
+        mail[:webhook] = 'https://hooks.slack.com/services/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'
+        mail.deliver
       }.not_to raise_error
     end
   end

@@ -9,13 +9,13 @@ describe SlactionMailer::Message do
       body    'This is the email body'
     end 
   }
-  it 'can run without a template' do
-    expect { message = SlactionMailer::Message.new(mail) }.not_to raise_error
+  it 'can render without a template' do
+    expect { message = SlactionMailer::Message.new(mail).result }.not_to raise_error
   end
 
-  it 'can use a template' do
+  it 'can render a template' do
     template = File.read('spec/examples/template.text.erb')
-    expect { message = SlactionMailer::Message.new(mail, :template => template) }.not_to raise_error
+    expect { message = SlactionMailer::Message.new(mail, :template => template).result }.not_to raise_error
   end
 
   it 'renders attachments properly' do
